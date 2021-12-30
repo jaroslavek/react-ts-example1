@@ -6,6 +6,7 @@ import { List } from "./List";
 export interface TodoItem {
   id: number;
   text: string;
+  description?: string;
 }
 
 type State = {
@@ -21,7 +22,7 @@ export function TodoList() {
   });
 
   function addItem(text: string) {
-    setState(prevState => {
+    setState((prevState) => {
       id++;
       return {
         todoItems: [{ id, text }, ...prevState.todoItems]
@@ -30,9 +31,9 @@ export function TodoList() {
   }
 
   function removeItem(id: number) {
-    setState(prevState => {
+    setState((prevState) => {
       return {
-        todoItems: prevState.todoItems.filter(item => item.id !== id)
+        todoItems: prevState.todoItems.filter((item) => item.id !== id)
       };
     });
   }
